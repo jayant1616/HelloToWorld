@@ -23,7 +23,7 @@ const HelloToWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloToWorldIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Hello to the fucking world, You can spin me right round like a record baby!';
+        const speakOutput = 'really good response!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
