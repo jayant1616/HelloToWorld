@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "change me",
+      "invocationName": "hello to",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -16,7 +16,7 @@
           "samples": []
         },
         {
-          "name": "HelloWorldIntent",
+          "name": "HelloToWorldIntent",
           "slots": [],
           "samples": [
             "hello",
@@ -31,10 +31,24 @@
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
+        },
+        {
+          "name": "HelloToWorld",
+          "slots": [],
+          "samples": [
+            " Henlo"
+          ]
+        },
+        {
+          "name": "DemoIntent",
+          "slots": [],
+          "samples": [
+            "demo "
+          ]
         }
       ],
       "types": []
     }
   },
-  "version": "1"
+  "version": "6"
 }
