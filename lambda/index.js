@@ -17,7 +17,7 @@ const LaunchRequestHandler = {
     }
 };
 
-const GraphNode = graph.listOfNode[0];
+let GraphNode = graph.listOfNode[0];
 
 const UniversalHandler = {
     canHandle(handlerInput) {
