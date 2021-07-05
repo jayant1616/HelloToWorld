@@ -28,9 +28,10 @@ const UniversalHandler = {
     handle(handlerInput) {
 
         const speakOutPut = GraphNode.reply;
-        //const children = GraphNodeId[0];
-        //GraphNode = graph.edges[children].to;
-        //GraphNodeId = graph.adjacency[GraphNode];
+        const children = GraphNodeId[0];
+        const GraphNodeRef = graph.edges[children].to;
+        GraphNode = graph.nodes[GraphNodeRef];
+        GraphNodeId = graph.adjacency[GraphNodeRef];
 
 
         return handlerInput.responseBuilder
