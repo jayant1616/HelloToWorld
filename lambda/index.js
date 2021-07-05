@@ -17,7 +17,6 @@ const LaunchRequestHandler = {
     }
 };
 
-let GraphNode = graph.listOfNode[0];
 
 const UniversalHandler = {
     canHandle(handlerInput) {
@@ -25,7 +24,8 @@ const UniversalHandler = {
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloToWorldIntent';
     },
     handle(handlerInput) {
-
+        let GraphNode = graph.listOfNode[0];
+        
         const speakOutPut = graph.nodes[GraphNode].reply;
         GraphNode =graph.nodes[GraphNode].children;
 
