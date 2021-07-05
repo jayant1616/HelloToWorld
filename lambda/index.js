@@ -2,7 +2,8 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
-
+const DAG = require('./graph.json');
+const graph = JSON.parse(DAG);
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -16,6 +17,27 @@ const LaunchRequestHandler = {
     }
 };
 
+const GraphNode = graph.nodes.a;
+const GraphNodeId = graph.adjacency[0];
+
+const UniversalHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
+    },
+    handle(handlerInput) {
+
+        const speakOutPut = GraphNode.reply;
+        const children = GraphNodeId[0];
+        GraphNode = graph.edges[children].to;
+        GraphNodeId = graph.adjacency[GraphNode];
+
+
+        return handlerInput.responseBuilder
+            .speak(speakOutPut)
+            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
 
 const HelloToWorldIntentHandler = {
     canHandle(handlerInput) {

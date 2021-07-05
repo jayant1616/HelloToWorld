@@ -1,0 +1,34 @@
+{
+    "adjacency": {
+      "a": [ "2"],
+      "b": ["3"]
+    },
+    "nodes": {
+      "a": {
+          "reply": "1st Reply"
+      },
+      "b": {
+          "reply" : "2nd Reply"
+      },
+      "c": {
+          "reply": "3rd Reply"
+      }
+    },
+    "edges": {
+      "1": {
+        "from": "a", "to": "b",
+        "data": {
+        }
+      },
+      "2": {
+        "from": "a", "to": "b",
+        "data": {
+        }
+      },
+      "3": {
+        "from": "b", "to": "c",
+        "data": {
+        }
+      }
+    }
+  }
