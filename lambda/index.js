@@ -17,8 +17,7 @@ const LaunchRequestHandler = {
     }
 };
 
-const GraphNode = graph.nodes.a;
-const GraphNodeId = graph.adjacency["a"];
+const GraphNode = graph.listOfNode[0];
 
 const UniversalHandler = {
     canHandle(handlerInput) {
@@ -27,11 +26,8 @@ const UniversalHandler = {
     },
     handle(handlerInput) {
 
-        const speakOutPut = GraphNode.reply;
-        const children = GraphNodeId[0];
-        const GraphNodeRef = graph.edges[children].to;
-        GraphNode = graph.nodes[GraphNodeRef];
-        GraphNodeId = graph.adjacency[GraphNodeRef];
+        const speakOutPut = graph.node[GraphNode];
+        GraphNode = GraphNode.children
 
 
         return handlerInput.responseBuilder

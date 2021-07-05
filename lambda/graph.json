@@ -1,34 +1,18 @@
 {
-    "adjacency": {
-      "a": [ "2"],
-      "b": ["3"]
-    },
     "nodes": {
       "a": {
-          "reply": "1st Reply"
+          "reply": "1st Reply",
+          "children" : "b"
       },
       "b": {
-          "reply" : "2nd Reply"
+          "reply" : "2nd Reply",
+          "children" : "b"
       },
       "c": {
-          "reply": "3rd Reply"
+          "reply": "3rd Reply",
+          "children": "a"
       }
     },
-    "edges": {
-      "1": {
-        "from": "a", "to": "b",
-        "data": {
-        }
-      },
-      "2": {
-        "from": "a", "to": "b",
-        "data": {
-        }
-      },
-      "3": {
-        "from": "b", "to": "c",
-        "data": {
-        }
-      }
-    }
+    "listOfNode" : ["a","b","c"]
+  
   }
