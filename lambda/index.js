@@ -22,7 +22,8 @@ const GraphNodeId = graph.adjacency["a"];
 
 const UniversalHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+        && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloToWorldIntent';
     },
     handle(handlerInput) {
 
