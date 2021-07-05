@@ -28,9 +28,9 @@ const UniversalHandler = {
     handle(handlerInput) {
 
         const speakOutPut = GraphNode.reply;
-        const children = GraphNodeId[0];
-        GraphNode = graph.edges[children].to;
-        GraphNodeId = graph.adjacency[GraphNode];
+        //const children = GraphNodeId[0];
+        //GraphNode = graph.edges[children].to;
+        //GraphNodeId = graph.adjacency[GraphNode];
 
 
         return handlerInput.responseBuilder
@@ -133,7 +133,6 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         UniversalHandler,
-        HelloToWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
