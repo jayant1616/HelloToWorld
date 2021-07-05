@@ -26,8 +26,8 @@ const UniversalHandler = {
     },
     handle(handlerInput) {
 
-        const speakOutPut = graph.node[GraphNode];
-        GraphNode = GraphNode.children
+        const speakOutPut = graph.nodes[GraphNode].reply;
+        GraphNode =graph.nodes[GraphNode].children;
 
 
         return handlerInput.responseBuilder
