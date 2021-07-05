@@ -6,7 +6,7 @@
       },
       "b": {
           "reply" : "2nd Reply",
-          "children" : "b"
+          "children" : "c"
       },
       "c": {
           "reply": "3rd Reply",
