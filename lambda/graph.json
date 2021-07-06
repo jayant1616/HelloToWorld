@@ -11,13 +11,14 @@
       "c": {
           "reply": "c Reply , say yes or no",
           "children": {"yes": "d", "no": "a"}
-      }
-    },
-    "d":{
+      },
+      "d":{
         "reply": "d reply, say yes or no",
         "children" : {"yes": "a", "no": "b"}
 
+        }
     },
+   
     "listOfNode" : ["a","b","c","d"]
   
   }
