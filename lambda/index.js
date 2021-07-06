@@ -17,7 +17,7 @@ const LaunchRequestHandler = {
     }
 };
 
-    let GraphNode = graph.listOfNode[0];
+let GraphNode = graph.listOfNode[0];
 const UniversalHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -32,7 +32,7 @@ const UniversalHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutPut)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
