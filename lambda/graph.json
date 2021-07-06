@@ -1,17 +1,22 @@
 {
     "nodes": {
       "a": {
-          "reply": "1st Reply",
-          "children" : "b"
+          "reply": "a Reply, say yes or no",
+          "children" : {"yes":"b", "no":"d" }
       },
       "b": {
-          "reply" : "2nd Reply",
-          "children" : "c"
+          "reply" : "b Reply , say yes or no",
+          "children" : {"yes": "c", "no": "d"}
       },
       "c": {
-          "reply": "3rd Reply",
-          "children": "a"
+          "reply": "c Reply , say yes or no",
+          "children": {"yes": "d", "no": "a"}
       }
+    },
+    "d":{
+        "reply": "d reply, say yes or no",
+        "children" : {"yes": "a", "no": "b"}
+
     },
     "listOfNode" : ["a","b","c"]
   

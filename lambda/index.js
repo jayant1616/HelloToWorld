@@ -4,12 +4,16 @@
 const Alexa = require('ask-sdk-core');
 const DAG = require('./graph.json');
 const graph = DAG;
+
+let GraphNode ;
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
         const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        GraphNode = graph.listOfNode[0];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -17,7 +21,21 @@ const LaunchRequestHandler = {
     }
 };
 
-let GraphNode = graph.listOfNode[0];
+
+
+const YesAndNoInterceptor = {
+    process(handlerInput){
+        if( Alexa.getRequestType(handlerInput.requestEnvelope) != 'IntentRequest'
+        || Alexa.getIntentName(handlerInput.requestEnvelope) != 'YesAndNoIntent' ){return;}
+
+        //Get yes or no from the request :
+        let userChoice = 'yes';
+        GraphNode =graph.nodes[GraphNode].children[userChoice];
+        return;
+
+    }
+};
+
 
 const UniversalHandler = {
     canHandle(handlerInput) {
@@ -27,7 +45,6 @@ const UniversalHandler = {
     handle(handlerInput) {
 
         const speakOutPut = graph.nodes[GraphNode].reply;
-        GraphNode =graph.nodes[GraphNode].children;
 
 
         return handlerInput.responseBuilder
@@ -129,6 +146,7 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
+        YesAndNoInterceptor,
         UniversalHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
