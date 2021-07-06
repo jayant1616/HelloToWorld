@@ -43,7 +43,8 @@ const UniversalHandler = {
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloToWorldIntent';
     },
     handle(handlerInput) {
-
+        //if(GraphNode==undefined) GraphNode = graph.listOfNode[0];
+        
         const speakOutPut = graph.nodes[GraphNode].reply;
 
 
@@ -62,7 +63,7 @@ const HelloToWorldIntentHandler = {
         const speakOutput = 'really good response!';
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
 };
