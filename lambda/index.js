@@ -26,7 +26,8 @@ const LaunchRequestHandler = {
 const YesAndNoInterceptor = {
     process(handlerInput){
         if( Alexa.getRequestType(handlerInput.requestEnvelope) !== 'IntentRequest'
-        || Alexa.getIntentName(handlerInput.requestEnvelope) !== 'HelloToWorldIntent' ){return;}
+        || Alexa.getIntentName(handlerInput.requestEnvelope) !== 'HelloToWorldIntent' ||
+        Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'){return;}
 
         //Get yes or no from the request :
         let userChoice = 'yes';

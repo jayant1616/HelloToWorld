@@ -18,6 +18,6 @@
         "children" : {"yes": "a", "no": "b"}
 
     },
-    "listOfNode" : ["a","b","c"]
+    "listOfNode" : ["a","b","c","d"]
   
   }
