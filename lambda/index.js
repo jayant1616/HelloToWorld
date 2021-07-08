@@ -13,7 +13,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
-        GraphNode = graph.listOfNode['source'];
+        GraphNode = graph.listOfNode['start'];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
