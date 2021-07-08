@@ -13,7 +13,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
-        GraphNode = graph.listOfNode[0];
+        GraphNode = graph.listOfNode['source'];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -28,7 +28,7 @@ const YesAndNoInterceptor = {
         if( Alexa.getRequestType(handlerInput.requestEnvelope) !== 'IntentRequest'
         || Alexa.getIntentName(handlerInput.requestEnvelope) !== 'HelloToWorldIntent' ||
         Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'){return;}
-
+        
         //Get yes or no from the request :
         let userChoice = 'yes';
         GraphNode =graph.nodes[GraphNode].children[userChoice];

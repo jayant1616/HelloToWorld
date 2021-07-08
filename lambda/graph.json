@@ -1,12 +1,18 @@
 {
     "nodes": {
+      "start": {
+          "reply": "Source and start node of the Graph",
+          "children" : { "yes": "a" }
+      },
+
       "a": {
           "reply": "a Reply, say yes or no",
-          "children" : {"yes":"b", "no":"d" }
+          "children" : {"yes":"b", "no":"d", "yeah":"b" }
       },
       "b": {
           "reply" : "b Reply , say yes or no",
-          "children" : {"yes": "c", "no": "d"}
+          "children" : {"yes": "c", "no": "d"},
+          "parent" : {"a"}
       },
       "c": {
           "reply": "c Reply , say yes or no",
