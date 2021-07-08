@@ -24,6 +24,6 @@
         }
     },
    
-    "listOfNode" : ["a","b","c","d"]
+    "listOfNode" : ["start","a","b","c","d"]
   
   }
