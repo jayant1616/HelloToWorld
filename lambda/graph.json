@@ -11,8 +11,7 @@
       },
       "b": {
           "reply" : "b Reply , say yes or no",
-          "children" : {"yes": "c", "no": "d"},
-          "parent" : {"a"}
+          "children" : {"yes": "c", "no": "d"}
       },
       "c": {
           "reply": "c Reply , say yes or no",
