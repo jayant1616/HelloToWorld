@@ -3,9 +3,9 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 const DAG = require('./graph.json');
-const graph = DAG;
+const GraphCrawler = require('./GraphCrawler');
 
-let GraphNode ;
+let Graph ;
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -13,7 +13,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
-        GraphNode = graph.listOfNode[0];
+        Graph = new GraphCrawler(DAG);
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -31,7 +31,7 @@ const YesAndNoInterceptor = {
         
         //Get yes or no from the request :
         let userChoice = 'yes';
-        GraphNode =graph.nodes[GraphNode].children[userChoice];
+        Graph.next(userChoice);
         return;
 
     }
@@ -46,7 +46,7 @@ const UniversalHandler = {
     handle(handlerInput) {
         //if(GraphNode==undefined) GraphNode = graph.listOfNode[0];
         
-        const speakOutPut = graph.nodes[GraphNode].reply;
+        const speakOutPut = Graph.getReply();
 
 
         return handlerInput.responseBuilder
