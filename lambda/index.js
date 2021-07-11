@@ -5,6 +5,7 @@ const Alexa = require('ask-sdk-core');
 const DAG = require('./graph.json');
 const GraphCrawler = require('./GraphCrawler');
 
+//Global Graph Object for the User :
 let Graph ;
 
 const LaunchRequestHandler = {
@@ -13,6 +14,7 @@ const LaunchRequestHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        //Graph Object Instantiated: 
         Graph = new GraphCrawler(DAG);
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -22,15 +24,19 @@ const LaunchRequestHandler = {
 };
 
 
-
-const YesAndNoInterceptor = {
+//GraphInterceptor object is a request interceptor and it runs before every intent request from User, irrespective of the intent
+//The graph logic of going to the next node based on the user logic is implemented in this interceptor
+const GraphInterceptor = {
     process(handlerInput){
         if( Alexa.getRequestType(handlerInput.requestEnvelope) !== 'IntentRequest'
         || Alexa.getIntentName(handlerInput.requestEnvelope) !== 'HelloToWorldIntent' ||
         Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'){return;}
         
-        //Get yes or no from the request :
-        let userChoice = 'yes';
+        //Get the user choice from the request :
+        let userChoice = 'yes'; //right now it's hard coded as Yes only but can be dynamically fetched from the Request
+        
+        //The Graph next() method is called along with userChoice which changes the node to the required node
+        //based on the user choice:
         Graph.next(userChoice);
         return;
 
@@ -38,7 +44,7 @@ const YesAndNoInterceptor = {
 };
 
 
-const UniversalHandler = {
+const IntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloToWorldIntent';
@@ -46,6 +52,8 @@ const UniversalHandler = {
     handle(handlerInput) {
         //if(GraphNode==undefined) GraphNode = graph.listOfNode[0];
         
+        //This handler just goes to the Graph object that was instantiated with launch request and uses getReply()
+        //Method to get the reply of current Graph node
         const speakOutPut = Graph.getReply();
 
 
@@ -148,14 +156,14 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        UniversalHandler,
+        IntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
     )
     .addRequestInterceptors(
-        YesAndNoInterceptor
+        GraphInterceptor
     )
     .addErrorHandlers(
         ErrorHandler,

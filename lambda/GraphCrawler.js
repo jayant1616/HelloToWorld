@@ -6,7 +6,8 @@ export class GraphCrawler {
     }
 
     next(userChoice){
-        this.GraphNode = (this.graph).nodes[(this.GraphNode)].children[userChoice];
+        let nodes = this.graph.nodes;
+        this.GraphNode = nodes[(this.GraphNode)].children[userChoice];
     }
 
     getReply(){
