@@ -1,4 +1,4 @@
-export class GraphCrawler {
+class GraphCrawler {
 
     constructor(graph){
         this.graph = graph;
@@ -15,3 +15,4 @@ export class GraphCrawler {
 
 }
 
+exports = GraphCrawler;
